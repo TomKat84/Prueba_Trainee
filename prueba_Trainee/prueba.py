@@ -44,10 +44,21 @@ def obtenerProductoEspecifico(name):
 def actualizarProducto(name):
     #se obtiene el indice o posicion de un producto en la lista
     indexProduct = productos_name.index(name)
-    productos_id[indexProduct] = int(input("id del producto: "))
-    productos_name[indexProduct] = input("nombre del producto: ")
-    productos_price[indexProduct] = float(input("precio del producto: "))
-    productos_stocks[indexProduct] = int(input("stocks del producto: "))
+
+    #variables de entradas por el usuario
+    int_id = int(input("id del producto: "))
+    name = input("nombre del producto: ")
+    float_price = float(input("precio del producto: "))
+    int_stocks = int(input("stocks del producto: "))
+
+    #verifica si el precio o stocks son mayor a 0
+    if float_price > 0 and int_stocks > 0 and int_id > 0:
+        productos_id[indexProduct] = int_id
+        productos_name[indexProduct] = name
+        productos_price[indexProduct] = float_price
+        productos_stocks[indexProduct] = int_stocks
+    else:
+        print("lo siento vuelva a intentarlo")
 
 #metodo para eliminar un producto
 def eliminarProducto(name):
@@ -76,7 +87,12 @@ while opcion != "0":
             name = input("nombre del producto: ")
             float_price = float(input("precio del producto: "))
             int_stocks = int(input("stocks del producto: "))
-            crearProductos(int_id, name, float_price, int_stocks)
+
+            #se verifica si los precios y stocks son mayor a 0
+            if float_price > 0 and int_stocks > 0 and int_id > 0:
+                crearProductos(int_id, name, float_price, int_stocks)
+            else:
+                print("lo siento vuelva a intentarlo")
 
         elif opcion == "2":
             obtenerProductos()
@@ -97,10 +113,6 @@ while opcion != "0":
         print("parece que hubo un error")
 
     print()
-
-
-
-
 
 
 
